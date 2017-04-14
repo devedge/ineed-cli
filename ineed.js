@@ -9,8 +9,6 @@ if (cli.search) {
 	searchstring = cli.search;
 }
 
-// console.time('init');
-
 // TODO cache the last result for faster re-search
 
 if (cli.verbose) { console.log('Request sent to ' + normalizeUrl(cli.url)) }
@@ -38,11 +36,15 @@ ineed
 	if (err) {
 		console.log('Error: URL is probably not valid');
 		process.exit(1);
-	} 
+	}
 	
 	// If the status code is not normal, log it
 	if (response.statusCode !== 200) {
 		console.log('Error Status Code: ' + response.statusCode);
+		
+		// if (!result) {
+		// 	
+		// }
 	}
 	
 	if (cli.verbose) { console.log('Printing results to stdout') }

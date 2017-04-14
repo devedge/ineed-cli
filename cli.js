@@ -44,7 +44,7 @@ const helpSection = [
 	{
 		header: 'Example usage',
 		content: [
-			'ineed techcrunch.com',
+			'ineed -t techcrunch.com',
 			'ineed -il -s png techcrunch.com',
 			'ineed --everything techcrunch.com',
 			'ineed -jcmn -s google techcrunch.com'

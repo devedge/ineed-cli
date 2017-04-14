@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A command line interface for the 'ineed' web scraping package",
   "main": "ineed.js",
+  "bin": {
+	  "ineed": "ineed.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
