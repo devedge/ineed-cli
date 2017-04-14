@@ -1,7 +1,7 @@
 <p align="center">
 	<img src="https://raw.githubusercontent.com/devedge/ineed-cli/master/ic.png"/>
 	<br><br>
-	A cli interface for the <code>ineed</code> web scraping package
+	A cli interface for the <code><a href="https://github.com/inikulin/ineed">ineed</a></code> web scraping package
 </p>
 	
 [![Licence](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/devedge/ineed-cli/blob/master/LICENSE)
@@ -77,9 +77,9 @@ A full list of available flags is listed below:
 
 ## Dependencies
 - [ineed](https://github.com/inikulin/ineed), for webpage requests and HTML parsing
-- [command-line-args](), to parse command line flags and user input
-- [command-line-usage](), to display prettified program usage
-- [normalize-url](), to handle urls that don't have an explicitly specified prefix, eg. `https://`
+- [command-line-args](https://github.com/75lb/command-line-args), to parse command line flags and user input
+- [command-line-usage](https://github.com/75lb/command-line-usage), to display prettified program usage
+- [normalize-url](https://github.com/sindresorhus/normalize-url), to handle urls that don't have an explicitly specified prefix, eg. `https://`
 
 
 ## License
