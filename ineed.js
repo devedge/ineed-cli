@@ -20,6 +20,8 @@ let url = process.argv[2];
 
 // console.time('init');
 
+// TODO cache the last result for faster re-search
+
 // Collect everything at once. Unofficial timing tests and ineed's 
 // one-pass strategy means that there is no appreciable time 
 // difference. Requests + ineed's parsing took anywhere from 
