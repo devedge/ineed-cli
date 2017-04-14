@@ -7,6 +7,7 @@ const header = `_________________________________________________
   /   /   ) /___) /___) /   /  ===  /   ' /   /  
 _/___/___/_(___ _(___ _(___/_______(___ _/___/___
 `;
+let useroptions;
 
 // Define all possible cli options
 const optionDefinitions = [
@@ -18,17 +19,19 @@ const optionDefinitions = [
     { name: 'title', alias: 't', type: Boolean, defaultValue: false },
 	
 	{ name: 'texts', alias: 'x', type: Boolean, defaultValue: false },
-	{ name: 'ejs', alias: 'm', type: Boolean, defaultValue: false }, // embedded JavaScript
-	{ name: 'ecss', alias: 'n', type: Boolean, defaultValue: false }, // embedded CSS
+	{ name: 'ejs', alias: 'm', type: Boolean, defaultValue: false },
+	{ name: 'ecss', alias: 'n', type: Boolean, defaultValue: false },
 	{ name: 'comments', alias: 'k', type: Boolean, defaultValue: false },
 	
 	{ name: 'everything', alias: 'e', type: Boolean, defaultValue: false },
     
 	{ name: 'search', alias: 's', type: String, multiple: false },
 	
+	{ name: 'verbose', alias: 'v', type: Boolean, defaultValue: false },
 	{ name: 'help', alias: 'h', type: Boolean, defaultValue: false }
 ];
 
+// List the help information
 const helpSection = [
 	{
 		content: header,
@@ -36,20 +39,20 @@ const helpSection = [
 	},
 	{
 		header: 'ineed-cli',
-		content: 'A cli interface for ineed web scraping package'
+		content: 'A cli interface for the \'ineed\' web scraping package'
 	},
 	{
 		header: 'Example usage',
 		content: [
 			'ineed techcrunch.com',
-			'ineed -il -s techcrunch.com',
+			'ineed -il -s png techcrunch.com',
 			'ineed --everything techcrunch.com',
 			'ineed -jcmn -s google techcrunch.com'
 		]
 	},
 	{
 		header: 'Options',
-		content: [
+		optionList: [
 			{
 				name: 'url',
 				alias: 'u',
@@ -111,6 +114,11 @@ const helpSection = [
 				description: 'Display only results that contain this search string'
 			},
 			{
+				name: 'verbose',
+				alias: 'v',
+				description: 'Log extraneous information about program status'
+			},
+			{
 				name: 'help',
 				alias: 'h',
 				description: 'This usage guide'
@@ -119,6 +127,61 @@ const helpSection = [
 	}
 ];
 
-
+// Prepare the usage
 const usage = getUsage(helpSection);
-console.log(usage);
+
+// Try retrieving user options
+try {
+	useroptions = commandLineArgs(optionDefinitions);
+} catch (e) {
+	// Log error and usage
+	console.log('Error: ' + e);
+	console.log(usage);
+	
+	process.exit(1); // exit with error
+}
+
+// Logic an parsing section
+
+// If the help was requested
+if (useroptions.help) {
+	console.log(usage);
+	process.exit(0); // exit with success
+
+} else if (!useroptions.url) {
+	// If a url was not specified
+	console.log('Error: You have to enter a url');
+	process.exit(1); // exit with error
+	
+} else if (!useroptions.images &&
+	!useroptions.links &&
+	!useroptions.javascript &&
+	!useroptions.css &&
+	!useroptions.title &&
+	!useroptions.texts &&
+	!useroptions.ejs &&
+	!useroptions.ecss &&
+	!useroptions.comments &&
+	!useroptions.everything) {
+	
+	// If the user didn't specify anything, fail with an error
+	console.log('Error: You have to specify at least one flag');
+	process.exit(1);
+
+} else {
+	// Input is valid, check the 'everything' flag
+	if (useroptions.everything) {
+		useroptions.images = true;
+		useroptions.links = true;
+		useroptions.javascript = true;
+		useroptions.css = true;
+		useroptions.title = true;
+		useroptions.texts = true;
+		useroptions.ejs = true;
+		useroptions.ecss = true;
+		useroptions.comments = true;
+	}
+}
+
+// Return the options to the importer
+module.exports = useroptions;

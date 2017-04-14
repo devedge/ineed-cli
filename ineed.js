@@ -2,26 +2,18 @@ const ineed = require('ineed');
 const normalizeUrl = require('normalize-url');
 
 // Get user input from the command line
-// const cli = require('./cli');
-
-let images = false;
-let hyperlinks = false;
-let scripts = true;
-let stylesheets = true;
-let title = false;
-
-let texts = false;
-let jsCode = false;
-let cssCode = false;
-let comments = false;
-
+const cli = require('./cli');
 let searchstring = '';
 
-let url = process.argv[2];
+if (cli.search) {
+	searchstring = cli.search;
+}
 
 // console.time('init');
 
 // TODO cache the last result for faster re-search
+
+if (cli.verbose) { console.log('Request sent to ' + normalizeUrl(cli.url)) }
 
 // Collect everything at once. Unofficial timing tests and ineed's 
 // one-pass strategy means that there is no appreciable time 
@@ -38,8 +30,9 @@ ineed
 		.jsCode			// Inline JavaScript
 		.cssCode		// Inline CSS
 		.comments		// HTML comments
-		.from(normalizeUrl(url), (err, response, result) => {
+		.from(normalizeUrl(cli.url), (err, response, result) => {
 
+	if (cli.verbose) { console.log('Response successful and parsing finalized') }
 
 	// On a fatal error, log it and quit
 	if (err) {
@@ -52,20 +45,22 @@ ineed
 		console.log('Error Status Code: ' + response.statusCode);
 	}
 	
+	if (cli.verbose) { console.log('Printing results to stdout') }
+	
 	// Print the user-selected results
-	if (images) {
+	if (cli.images) {
 		outputResult(result.images, 'src');
 	}
-	if (hyperlinks) {
+	if (cli.links) {
 		outputResult(result.hyperlinks, 'href');
 	}
-	if (scripts) {
+	if (cli.javascript) {
 		outputResult(result.scripts);
 	}
-	if (stylesheets) {
+	if (cli.css) {
 		outputResult(result.stylesheets);
 	}
-	if (title) {
+	if (cli.title) {
 		if (searchstring) {
 			if (result.title.indexOf(searchstring) !== -1) {
 				console.log(result.title);
@@ -74,18 +69,20 @@ ineed
 			console.log(result.title);
 		}
 	}
-	if (texts) {
+	if (cli.texts) {
 		outputResult(result.texts);
 	}
-	if (jsCode) {
+	if (cli.ejs) {
 		outputResult(result.jsCode);
 	}
-	if (cssCode) {
+	if (cli.ecss) {
 		outputResult(result.cssCode);
 	}
-	if (comments) {
+	if (cli.comments) {
 		outputResult(result.comments);
 	}
+	
+	if (cli.verbose) { console.log('Printing results complete') }
 });
 
 
