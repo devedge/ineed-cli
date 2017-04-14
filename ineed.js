@@ -1,18 +1,19 @@
 const ineed = require('ineed');
+const normalizeUrl = require('normalize-url');
 
 // Get user input from the command line
 // const cli = require('./cli');
 
-let images = true;
-let hyperlinks = true;
+let images = false;
+let hyperlinks = false;
 let scripts = true;
 let stylesheets = true;
-let title = true;
+let title = false;
 
-let texts = true;
-let jsCode = true;
-let cssCode = true;
-let comments = true;
+let texts = false;
+let jsCode = false;
+let cssCode = false;
+let comments = false;
 
 let searchstring = '';
 
@@ -37,7 +38,7 @@ ineed
 		.jsCode			// Inline JavaScript
 		.cssCode		// Inline CSS
 		.comments		// HTML comments
-		.from(url, (err, response, result) => {
+		.from(normalizeUrl(url), (err, response, result) => {
 
 
 	// On a fatal error, log it and quit
@@ -51,8 +52,7 @@ ineed
 		console.log('Error Status Code: ' + response.statusCode);
 	}
 	
-	
-	// 
+	// Print the user-selected results
 	if (images) {
 		outputResult(result.images, 'src');
 	}
@@ -90,11 +90,12 @@ ineed
 
 
 /**
- * [outputResult description]
+ * The method to sequentially print results to standard out
  * @method outputResult
- * @param  {[type]} elementArray [description]
- * @param  {[type]} selector     [description]
- * @return {[type]}              [description]
+ * @param  {Array} elementArray The array of elements returned by ineed
+ * @param  {String} selector     If an item is a value in an object, this 
+ *                               'selector' string can be used to retrieve it
+ * @return {stdout}              Prints results to standard out with 'console.log()'
  */
 function outputResult(elementArray, selector) {
 	if (selector) {
