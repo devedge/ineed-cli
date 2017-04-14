@@ -1,0 +1,16 @@
+{
+  "name": "ineed-cli",
+  "version": "1.0.0",
+  "description": "A command line interface for the 'ineed' web scraping package",
+  "main": "ineed.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "devedge",
+  "license": "MIT",
+  "dependencies": {
+    "command-line-args": "^4.0.2",
+    "command-line-usage": "^4.0.0",
+    "ineed": "^1.0.4"
+  }
+}
