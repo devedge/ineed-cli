@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const ineed = require('ineed');
 const normalizeUrl = require('normalize-url');
 
@@ -10,6 +12,7 @@ if (cli.search) {
 }
 
 // TODO cache the last result for faster re-search
+// TODO colorized output
 
 if (cli.verbose) { console.log('Request sent to ' + normalizeUrl(cli.url)) }
 
@@ -41,10 +44,6 @@ ineed
 	// If the status code is not normal, log it
 	if (response.statusCode !== 200) {
 		console.log('Error Status Code: ' + response.statusCode);
-		
-		// if (!result) {
-		// 	
-		// }
 	}
 	
 	if (cli.verbose) { console.log('Printing results to stdout') }

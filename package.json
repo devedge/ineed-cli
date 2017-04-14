@@ -4,7 +4,7 @@
   "description": "A command line interface for the 'ineed' web scraping package",
   "main": "ineed.js",
   "bin": {
-	  "ineed": "ineed.js"
+    "ineed": "ineed.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +16,25 @@
     "command-line-usage": "^4.0.0",
     "ineed": "^1.0.4",
     "normalize-url": "^1.9.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devedge/ineed-cli.git"
+  },
+  "keywords": [
+    "nodejs",
+    "ineed",
+    "scraping",
+    "command-line",
+    "commandline",
+    "web-scraping"
+  ],
+  "bugs": {
+    "url": "https://github.com/devedge/ineed-cli/issues"
+  },
+  "homepage": "https://github.com/devedge/ineed-cli#readme"
 }
