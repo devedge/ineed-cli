@@ -4,7 +4,8 @@
 	A cli interface for the <code><a href="https://github.com/inikulin/ineed">ineed</a></code> web scraping package
 </p>
 	
-[![Licence](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/devedge/ineed-cli/blob/master/LICENSE)
+[![Licence](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/devedge/ineed-cli/blob/master/LICENSE) 
+[![npm version](https://badge.fury.io/js/ineed-cli.svg?style=flat-square)](https://badge.fury.io/js/ineed-cli)
 	
 <hr>
 
