@@ -141,7 +141,7 @@ try {
 	process.exit(1); // exit with error
 }
 
-// Logic an parsing section
+// Logic and parsing section
 
 // If the help was requested
 if (useroptions.help) {

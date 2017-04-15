@@ -6,3 +6,21 @@ describe('Array', function() {
     });
   });
 });
+
+
+
+
+// Test fails
+// error when no url
+// error when no flags specified
+// 
+
+// Other Tests
+// if everything flag set, make sure all other flags are set
+// 
+// test an example image list 
+// test an example link list
+// test an example title list
+// 
+// test search string 
+// 	with selector and without selector
