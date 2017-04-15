@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="https://raw.githubusercontent.com/devedge/ineed-cli/master/ic.png"/>
+	<img src="https://raw.githubusercontent.com/devedge/ineed-cli/master/resources/logo.png"/>
 	<br><br>
 	A cli interface for the <code><a href="https://github.com/inikulin/ineed">ineed</a></code> web scraping package
 </p>

@@ -7,7 +7,7 @@
     "ineed": "ineed.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "devedge",
   "license": "MIT",
@@ -18,9 +18,12 @@
     "normalize-url": "^1.9.1"
   },
   "directories": {
+    "resources": "resources",
     "test": "test"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devedge/ineed-cli.git"
